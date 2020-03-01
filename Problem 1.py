@@ -20,5 +20,6 @@ def mulitples(limit):
         else:
             break
     collection = list(set(xmulti+zmulti))
-    return (sum(collection)
+    return (sum(collection))
+
 print(mulitples(1000))

@@ -1,5 +1,4 @@
-from __future__ import print_function
-n=int(input())
+n=600851475143
 prime=1
 i=2
 while(i*i<=n):

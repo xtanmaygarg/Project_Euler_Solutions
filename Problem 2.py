@@ -1,4 +1,4 @@
-n = int(input())
+n = 4000000
 a=0
 b=2
 count=0
