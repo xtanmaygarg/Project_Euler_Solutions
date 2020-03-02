@@ -1,13 +1,18 @@
-lis = []
-lis2 = []
-lis3 = []
-for i in range(1, 100000):
-    num = (i*(3*i - 1))//2
-    lis.append(num)
-    num2 = (i*(i + 1))//2
-    lis2.append(num2)
-    num3 = (i*(2*i - 1))
-    lis3.append(num3)
-for i in lis:
-    if i in lis2 and i in lis3:
-        print(i)
+from math import floor
+from itertools import count
+
+def quadratic(a, b, c):
+    return (-b + (b ** 2 - 4 * a * c) ** 0.5) / (2 * a)
+
+
+def solution():
+    for x in count(start=286, step=1):
+        t = (x * x + x) // 2
+        p = quadratic(3, -1, -2 * t)
+        h = quadratic(2, -1, -1 * t)
+
+        if floor(p) == p and floor(h) == h:
+            return t
+
+if __name__ == '__main__':
+    print(solution())

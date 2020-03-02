@@ -51,5 +51,6 @@ for i in range(1, 100000, 2):
                     Done = False
         if not Done:
             print(i)
+            break
                 
             

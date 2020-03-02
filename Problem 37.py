@@ -25,5 +25,5 @@ for i in range(10,1000000):
                 flag = 0
                 break
         if flag == 1:
-            print(j)
             s += j
+print(s)

@@ -1,40 +1,43 @@
-def leap_year(year):
-    if year % 4 == 0:
-        if year % 100 == 0:
-            if year % 400 == 0:
-                return True
-            else:
-                return False
-        else:
-            return True
-    else:
-        return False
-year = 1900
-curr_day = 2
-count = 0
-while (year <= 2000):
-    for month in range(1,13):
-        if month in [1,3,5,7,8,10,12]:
-            curr_day += 3
-            curr_day %= 7
-            if curr_day == 1:
-                count += 1
-        elif month == 2:
-            if leap_year(year):
-                curr_day += 1
-                curr_day %= 7
-                if curr_day == 1:
-                    count += 1
-            else:
-                if curr_day == 1:
-                    count += 1
-        else:
-            curr_day += 2
-            curr_day %= 7
-            if curr_day == 1:
-                count += 1
-    year += 1
-print(count)
-        
-            
-    
+days_dic = {
+    0: 'SUNDAY',
+    1: 'MONDAY',
+    2: 'THIRDDAY',
+    3: 'WEDNESDAY',
+    4: 'THURSDAY',
+    5: 'FRIDAY',
+    6: 'SATURDAY',
+}
+
+
+def howmanysundays(days, day):
+    some_incredible_stuff = int(days - (7 - day) > 28 or day == 0 and days > 28)
+    sundays_in_the_month = days // 7 + some_incredible_stuff
+    return sundays_in_the_month
+
+
+def is_leap(year):
+    return (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0)
+
+
+def solution(first_day):
+    months_days = {
+        1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
+        7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
+    }
+
+    interval = range(1900, 2000 + 1)
+    day = 1  # MONDAY (first day of year 1900)
+    firsts = 0
+    for year in interval:
+        leap = is_leap(year)
+        for month, days in sorted(months_days.items()):
+            if month == 2 and leap:
+                days += 1
+            if year > 1900 and day == first_day:
+                firsts += 1
+            day += days % 7
+            if day > 6:
+                day -= 7
+    return firsts
+
+print(solution(0))

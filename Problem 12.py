@@ -1,14 +1,16 @@
-lis = []
-s = 0
-for i in range(1,1000):
-    s += i
-    lis.append(s)
-lis.reverse()
-print(lis)
-for number in lis:
-    d = 1
-    for i in range(1, int(number/2)+1):
-        if number % i == 0:
-            d += 1
-            if d > 500:
-                print("FOUND AT ", number)    
+import itertools
+def compute():
+	triangle = 0
+	for i in itertools.count(1):
+		triangle += i
+		if num_divisors(triangle) > 500:
+			return str(triangle)
+
+
+def num_divisors(n):
+	end = int(n ** 0.5)
+	result = sum(2 for i in range(1, end + 1) if n % i == 0)
+	if end**2 == n:
+		result -= 1
+	return result
+print(compute())
