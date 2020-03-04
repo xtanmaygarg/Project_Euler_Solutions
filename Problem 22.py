@@ -1,5 +1,6 @@
 """
 Input Data From 22.txt in the Given Directory
+Please Add a Star if You Like The Work...
 """
 s = list(input().split(","))
 lis = []
