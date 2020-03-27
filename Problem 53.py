@@ -1,12 +1,12 @@
-import math
+from math import factorial
 
-def main():
-	count = 0
-	for n in range(1, 101):
-		for r in range(0, n+1):
-			if math.factorial(n)/math.factorial(r)/math.factorial(n-r) > 1000000:
-				count += 1
-	print(count)
-				
-if __name__ == '__main__':
-        main()
+def NCR(Val, Point):
+        return factorial(Val) // (factorial(Val - Point) * factorial(Point))
+
+Ans = 4
+Point = 10
+for Val in range(24, 101):
+        if NCR(Val, Point - 1) > 1000000:
+                Point -= 1
+        Ans += Val - 2 * Point + 1
+print(Ans)
